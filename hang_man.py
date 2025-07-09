@@ -33,4 +33,31 @@ def play_hangman(words):
             print("You already guessed that latter!")
         elif guess in word:
             print("correct!")
-            
+            for i, letter in guessed_letters:
+                print("You already guessed that letter!")
+                # if i, letter in enumerate(word):
+                if letter == guess:
+                    guessed_word[i]==guess
+            guessed+letters.add(guess)
+        else:
+            print("Incorrect!")
+            attempts-=1
+            guessed_letters.add(guess)
+        if "_" not in guessed_word:
+            print(f"\n Congratulations! you guessed the word: {word}")
+        else:
+            print(f"\n Game over! the word was: {word}")
+def main():
+    print("Hangma Game")
+    words= load_words('words.txt')
+    if not words:
+        return
+    while True:
+        play_hangman(words)
+        replay= input("\n Do you want to play again? (yes/no):")
+        if replay not in ("yes","y"):
+            print("Thanks For playing! GoofBye!")
+            break
+if __name__=="__main__":
+    main()
+                    
